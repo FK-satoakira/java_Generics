@@ -18,6 +18,15 @@ public class Main {
     	System.out.println("aa="+i);
     }
 //    これだと文字から数値への変換が例外になる。
+	
+// 	このやり方だとできた
+// 	Sample str = new Sample("1222");
+// 	System.out.println(str.o); 
+// 	String aa = String.valueOf(str.o); 
+// 	int i = Integer.parseInt(aa);
+// 	System.out.println(i);
+	
+	
 }
 class Sample{
 	Object o;
