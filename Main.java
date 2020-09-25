@@ -1,43 +1,84 @@
 package list_04_practice;
 
+import java.util.Date;
+
 public class Main {
     public static void main(String[] args) {
+//String
+    	Pocket p = new Pocket();
 
+    	Book b = new Book();
+//    	System.out.println(p);
+//    	System.out.println(b);
+    	b.setComment("good");
+    	b.setPublishDate(new Date());
+    	b.setTitle("titile");
+//    	System.out.println(b);
+    	p.put(b);
+    	Book a = (Book) p.get();
+//    	p.put(1);
+    	System.out.println(p.get());
+    	System.out.println(a.getPublishDate());
+    	Pocket p1 = new Pocket();
 
-    	String q = "777";
-    	int qq = Integer.parseInt(q);
-    	System.out.println(qq);
-//    	Sample num = new Sample(1);
-    	Sample str = new Sample("1222");
-//    	System.out.println(num.o);
-    	System.out.println(str.o);
-//    	String ss = String.valueOf(num);
-    	String aa = String.valueOf(str);
-    	int i = Integer.parseInt(aa);
-//    	System.out.println("ss="+ss);
-    	System.out.println("aa="+i);
+//    	p1.put(214);
+//    	p1.put("sda");
+//    	int i2 = p1.get();
+//    	Pocket<Book>にするとこのコメントの部分がコンパイルエラーになる。
+
+    	System.out.println("p1="+p1.get());
+
+//    	System.out.println("i="+i2);
     }
-//    これだと文字から数値への変換が例外になる。
-	
-// 	このやり方だとできた
-// 	Sample str = new Sample("1222");
-// 	System.out.println(str.o); 
-// 	String aa = String.valueOf(str.o); 
-// 	int i = Integer.parseInt(aa);
-// 	System.out.println(i);
-	
-	
-}
-class Sample{
-	Object o;
-	public Sample(Object o) {
-		this.o=o;
-	}
-//	@Override
-	public int toInsst() {
-    	String aa = String.valueOf(o);
-
-		return Integer.parseInt(aa);
-	}
 
 }
+//    class Pocket{
+//    	private Object data;
+//
+//		public Object get() {
+//			return data;
+//		}
+//
+//		public void put(Object data) {
+//			this.data = data;
+//		}
+//    }
+//    class Pocket<E>{
+//    	private E data;
+//
+//		public E get() {
+//			return data;
+//		}
+//
+//		public void put(E data) {
+//			this.data = data;
+//		}
+//    }
+//    class Pocket<Book>{
+//    	private Book data;
+//
+//		public Book get() {
+//			return data;
+//		}
+//
+//		public void put(Book data) {
+//			this.data = data;
+//		}
+//    }
+    class Pocket<E extends Book>{
+    	private Book data;
+
+		public Book get() {
+			return data;
+		}
+
+		public void put(Book data) {
+			this.data = data;
+		}
+    }
+
+//    class Pocket=はどちらもStringを入れた後でもintを入れれる。
+//    class Pocket<E>=(String)などのキャストがいらなくなる。
+//    class Pocket<Book>=Bookしか入れられるというわけではない。
+//    class Pocket<E extends Book>+Pocket<Book>→Bookだけいれれる。
+//    <E extends Book>+Pocket<Book>以外、全体的にわりと自由だった。
